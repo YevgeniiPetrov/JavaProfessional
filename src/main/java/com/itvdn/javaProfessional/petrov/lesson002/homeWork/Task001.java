@@ -13,14 +13,14 @@ import java.util.Scanner;
 
 public class Task001 {
     public static void main(String[] args) {
-        final String EXIT = "end";
+        final String END = "end";
         List<String> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         String line;
         while (true) {
-            System.out.printf("Введите строку, или '%s', если хотите завершить ввод:\n", EXIT);
+            System.out.printf("Введите строку, или '%s', если хотите завершить ввод:\n", END);
             line = sc.nextLine();
-            if (line.equals(EXIT)) {
+            if (line.equals(END)) {
                 break;
             }
             list.add(line);
