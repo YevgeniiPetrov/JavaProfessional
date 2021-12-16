@@ -25,7 +25,7 @@ public class Main {
             myHashMap.put("" + i, ((int) (Math.random() * 100)));
         }
         for (int i = 0; i < 100; i++) {
-            System.out.println(myHashMap.get("" + i));
+            System.out.println(i + " " + myHashMap.get("" + i));
         }
     }
 }

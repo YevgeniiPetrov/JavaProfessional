@@ -25,7 +25,11 @@ public class MyHashMap<TKey, TValue> {
             }
             while (node != null) {
                 int index = getIndex((TKey) node.getKey());
-                buckets[index] = node;
+                if (buckets[index] == null) {
+                    buckets[index] = node;
+                } else {
+                    addToBucket(buckets[index], ((TKey) node.getKey()), ((TValue) node.getValue()));
+                }
                 node = node.getNext();
             }
         }
