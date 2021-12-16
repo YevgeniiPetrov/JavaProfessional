@@ -23,7 +23,6 @@ public class Task002 {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        String line;
         for (int i = 0; i < 5; i++) {
             System.out.printf("Введите слово №%d:\n", i + 1);
             list.add(sc.nextLine());
