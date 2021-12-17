@@ -3,6 +3,45 @@ package com.itvdn.javaProfessional.petrov.lesson003.homeWork.addTask;
 import java.util.Arrays;
 
 public class MyHashMap<TKey, TValue> {
+    private class MyNode<TKey, TValue> {
+        private TKey key;
+        private TValue value;
+        private MyNode next;
+
+        public MyNode(TKey key, TValue value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public TKey getKey() {
+            return key;
+        }
+
+        public TValue getValue() {
+            return value;
+        }
+
+        public void setValue(TValue value) {
+            this.value = value;
+        }
+
+        public MyNode getNext() {
+            return next;
+        }
+
+        public void setNext(MyNode next) {
+            this.next = next;
+        }
+
+        @Override
+        public String toString() {
+            return "MyNode{" +
+                    "key=" + key +
+                    ", value=" + value +
+                    '}';
+        }
+    }
+
     private MyNode[] buckets;
     private int size;
     private final int INITIAL_LENGTH = 16;
@@ -40,17 +79,15 @@ public class MyHashMap<TKey, TValue> {
     }
 
     private void addToBucket(MyNode node, TKey key, TValue value) {
-        MyNode prevNode = node;
-        while (node != null) {
+        while (node.getNext() != null) {
             if ((key == node.getKey()) || (key != null && key.equals(node.getKey()))) {
                 node.setValue(value);
                 return;
             } else {
-                prevNode = node;
                 node = node.getNext();
             }
         }
-        prevNode.setNext(new MyNode(key, value));
+        node.setNext(new MyNode(key, value));
     }
 
     public void put(TKey key, TValue value) {
