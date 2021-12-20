@@ -69,7 +69,6 @@ public class SimpleHashtable<TKey, TValue> {
     }
 
     private void resize() {
-        size = 0;
         SimpleNode[] prevBuckets = buckets;
         buckets = new SimpleNode[buckets.length * 2];
         for (SimpleNode node : prevBuckets) {
@@ -82,7 +81,6 @@ public class SimpleHashtable<TKey, TValue> {
                 TValue value = (TValue) node.getValue();
                 if (buckets[index] == null) {
                     buckets[index] = new SimpleNode(key, value);
-                    size++;
                 } else {
                     addToBucket(buckets[index], key, value);
                 }
@@ -143,10 +141,10 @@ public class SimpleHashtable<TKey, TValue> {
         int index = getIndex(key);
         if (buckets[index] == null) {
             buckets[index] = new SimpleNode(key, value);
-            size++;
         } else {
             addToBucket(buckets[index], key, value);
         }
+        size++;
     }
 
     public void remove(TKey key) {
