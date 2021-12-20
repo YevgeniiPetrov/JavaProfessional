@@ -56,7 +56,6 @@ public class MyHashMap<TKey, TValue> {
     }
 
     private void resize() {
-        size = 0;
         MyNode[] prevBuckets = buckets;
         buckets = new MyNode[buckets.length * 2];
         for (MyNode node : prevBuckets) {
@@ -69,7 +68,6 @@ public class MyHashMap<TKey, TValue> {
                 TValue value = (TValue) node.getValue();
                 if (buckets[index] == null) {
                     buckets[index] = new MyNode(key, value);
-                    size++;
                 } else {
                     addToBucket(buckets[index], key, value);
                 }
@@ -101,10 +99,10 @@ public class MyHashMap<TKey, TValue> {
         int index = getIndex(key);
         if (buckets[index] == null) {
             buckets[index] = new MyNode(key, value);
-            size++;
         } else {
             addToBucket(buckets[index], key, value);
         }
+        size++;
     }
 
     public TValue get(TKey key) {
