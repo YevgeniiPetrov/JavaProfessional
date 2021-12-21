@@ -1,5 +1,5 @@
-/* Создайте в package текстовый файл и клас, внесите в файл некий текст.
-Выведите на экран содержимое файла.*/
+/* Задание 3
+Создать и заполнить файл случайными целыми числами. Отсортировать содержимое файла по возрастанию.*/
 
 package com.itvdn.javaProfessional.petrov.lesson004.homeWork;
 
@@ -8,9 +8,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Task001 {
+public class Task003 {
+
+
     public static void main(String[] args) {
-        File file = new File("../JavaProfessional/src/main/resources/task001.txt");
+        File file = new File("../JavaProfessional/src/main/resources/task003.txt");
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
