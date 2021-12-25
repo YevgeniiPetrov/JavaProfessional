@@ -9,8 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Task001 {
-    public static void main(String[] args) {
-        File file = new File("../JavaProfessional/src/main/resources/task001.txt");
+    public static void readFile(File file) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -19,5 +18,10 @@ public class Task001 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        File file = new File("../JavaProfessional/src/main/resources/task001.txt");
+        readFile(file);
     }
 }
