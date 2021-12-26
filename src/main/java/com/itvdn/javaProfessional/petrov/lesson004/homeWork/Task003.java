@@ -34,7 +34,7 @@ public class Task003 {
         return list;
     }
 
-    public static void fillFile(File file, List<Integer> numbers) {
+    public static void writeFile(File file, List<Integer> numbers) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (Integer num : numbers) {
                 writer.write(num + "\n");
@@ -46,9 +46,9 @@ public class Task003 {
 
     public static void main(String[] args) {
         File file = new File("../JavaProfessional/src/main/resources/task003.txt");
-        fillFile(file, getNumbers());
+        writeFile(file, getNumbers());
         List<Integer> list = getNumbers(file);
         Collections.sort(list);
-        fillFile(file, list);
+        writeFile(file, list);
     }
 }
