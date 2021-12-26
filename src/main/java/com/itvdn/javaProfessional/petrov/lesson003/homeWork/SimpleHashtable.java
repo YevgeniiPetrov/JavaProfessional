@@ -69,6 +69,7 @@ public class SimpleHashtable<TKey, TValue> {
     }
 
     private void resize() {
+        size = 0;
         SimpleNode[] prevBuckets = buckets;
         buckets = new SimpleNode[buckets.length * 2];
         for (SimpleNode node : prevBuckets) {
@@ -81,6 +82,7 @@ public class SimpleHashtable<TKey, TValue> {
                 TValue value = (TValue) node.getValue();
                 if (buckets[index] == null) {
                     buckets[index] = new SimpleNode(key, value);
+                    size++;
                 } else {
                     addToBucket(buckets[index], key, value);
                 }
@@ -134,17 +136,16 @@ public class SimpleHashtable<TKey, TValue> {
         if (key == null || value == null) {
             throw new NullPointerException();
         }
-
         if (loadFactor()) {
             resize();
         }
         int index = getIndex(key);
         if (buckets[index] == null) {
             buckets[index] = new SimpleNode(key, value);
+            size++;
         } else {
             addToBucket(buckets[index], key, value);
         }
-        size++;
     }
 
     public void remove(TKey key) {
@@ -198,11 +199,11 @@ public class SimpleHashtable<TKey, TValue> {
         SimpleHashtable<String, Integer> simpleHashtable = new SimpleHashtable<>();
         for (int i = 0; i < countItems; i++) {
             simpleHashtable.put("" + i, i);
-            System.out.println(i + " " + simpleHashtable.size() + " " + simpleHashtable);
+            System.out.println(simpleHashtable.size() + " " + simpleHashtable);
         }
         for (int i = 0; i < countItems; i++) {
             simpleHashtable.remove("" + i);
-            System.out.println(i + " " + simpleHashtable.size() + " " + simpleHashtable);
+            System.out.println(simpleHashtable.size() + " " + simpleHashtable);
         }
     }
 }
