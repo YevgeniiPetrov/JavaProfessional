@@ -8,8 +8,8 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Task001 {
-    private static final String LOGIN_REGEX = "[a-zA-Z]{8,}";
-    private static final String PASSWORD_REGEX = "[0-9a-zA-Z$&+,:;=?@#|'<>.-^*()%!]{8,}";
+    private static final String LOGIN_REGEX = "[a-zA-Z]{8,16}";
+    private static final String PASSWORD_REGEX = "[0-9a-zA-Z$&+,:;=?@#|'<>.-^*()%!]{8,16}";
 
     public static boolean check(String regex, String input) {
         return Pattern.compile(regex).matcher(input).matches();

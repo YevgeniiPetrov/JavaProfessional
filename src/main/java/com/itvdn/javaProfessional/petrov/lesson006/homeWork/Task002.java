@@ -10,6 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task002 {
+    private static final String[] PREPOSITIONS = {"to", "at", "on", "in", "at", "for", "by", "from"};
+    private static final String JAVA = "Java";
+    
+    public static String getRegex() {
+        StringBuilder regex = new StringBuilder();
+        for (int i = 0; i < PREPOSITIONS.length; i++) {
+            regex.append(PREPOSITIONS[i]);
+            if (i != PREPOSITIONS.length - 1) {
+                regex.append("|");
+            }
+        }
+        return regex.toString();
+    }
+
     public static List<String> readFile(File file) {
         List<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -34,7 +48,7 @@ public class Task002 {
     }
 
     public static String decode(String line) {
-        return line.replaceAll("\\s*(?:to|under|in|at)s?", "Java");
+        return line.replaceAll("(\\b)(?i)(" + getRegex() + ")(\\b)", JAVA);
     }
 
     public static List<String> decode(List<String> lines) {
